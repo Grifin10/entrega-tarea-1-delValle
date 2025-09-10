@@ -15,17 +15,17 @@ const decreaseValue = (prev) => {
 return (
     <View style={styles.screenFlex}>
 
-    <View style={styles.buttonFlex}>
-    <Pressable onPress={() => decreaseValue(counter)}>
-        <View><Text style={styles.button}>Decrease value</Text> </View>
-    </Pressable>
+        <View style={styles.buttonFlex}>
+            <Pressable onPress={() => decreaseValue(counter)}>
+                <View><Text style={styles.button}>Decrease value</Text></View>
+            </Pressable>
 
-    <Pressable onPress={() => increaseValue(counter)}>
-        <View><Text style={styles.button}>Increase value</Text> </View>
-    </Pressable>
-    </View>
+            <Pressable onPress={() => increaseValue(counter)}>
+                <View><Text style={styles.button}>Increase value</Text></View>
+            </Pressable>
+        </View>
 
-    <Text style={[{fontSize:18}]}>Value: {counter.value}</Text>
+        <Text style={[{fontSize:18}]}>Value: {counter.value}</Text>
 
     </View>
 );
