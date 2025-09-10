@@ -10,7 +10,7 @@ const cards = [
   {id: "4", title: "HAM44" },
 ];
 
-export default function index(){
+export default function Index(){
   // Se retorna una FlatList que para cada tarjeta en cards llama a renderItem y ahi se crea un Item con los parametros correspondientes
   return (
       <View style = {styles.container}>
