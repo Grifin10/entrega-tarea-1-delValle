@@ -1,14 +1,14 @@
 import { Text, View, Pressable, StyleSheet } from "react-native";
 import { useState } from "react";
 
-export default function Index() {
+export default function Counter() {
 const [counter, setCounter] = useState({value: 0});
 
-const aumentar = (prev) => {
+const increaseValue = (prev) => {
     setCounter({value: prev.value + 1});
 };
 
-const reducir = (prev) => {
+const decreaseValue = (prev) => {
     setCounter({value: prev.value - 1});
 };
 
@@ -16,16 +16,16 @@ return (
     <View style={styles.screenFlex}>
 
     <View style={styles.buttonFlex}>
-    <Pressable onPress={() => reducir(counter)}>
-        <View><Text style={styles.button}>Reducir contador</Text> </View>
+    <Pressable onPress={() => decreaseValue(counter)}>
+        <View><Text style={styles.button}>Decrease value</Text> </View>
     </Pressable>
 
-    <Pressable onPress={() => aumentar(counter)}>
-        <View><Text style={styles.button}>Aumentar contador</Text> </View>
+    <Pressable onPress={() => increaseValue(counter)}>
+        <View><Text style={styles.button}>Increase value</Text> </View>
     </Pressable>
     </View>
 
-    <Text style={[{fontSize:18}]}>Valor actual: {counter.value}</Text>
+    <Text style={[{fontSize:18}]}>Value: {counter.value}</Text>
 
     </View>
 );

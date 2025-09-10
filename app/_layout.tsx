@@ -5,23 +5,23 @@ export default function RootLayout() {
   return (
   <Tabs>
     <Tabs.Screen
-      name="index"
+      name="cards"
       options={{
-        title: "Tarjetas",
+        title: "Cards",
         tabBarIcon: ({ color }) => <FontAwsome name="credit-card" size={25}/>
       }}
     />
     <Tabs.Screen
-      name="perfil"
+      name="profile"
       options={{
-        title: "Perfil",
+        title: "Profile",
         tabBarIcon: ({ color }) => <FontAwsome name="user" size={25}/>
       }}
     />
     <Tabs.Screen
-      name="contador"
+      name="counter"
       options={{
-        title: "Contador",
+        title: "Counter",
         tabBarIcon: ({ color }) => <FontAwsome name="hashtag" size={25}/>
       }}
     />
