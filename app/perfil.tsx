@@ -1,33 +1,47 @@
-import { Text, View, Pressable, StyleSheet } from "react-native";
+import { Text, View, Pressable, StyleSheet, Modal, TextInput } from "react-native";
 import { useState } from "react";
-import DialogInput from "react-native-dialog-input";;
 
 export default function Index() {
-    const [nombre, setNombre] = useState({nombre: "Facundo del Valle"});
+    const [nombre, setNombre] = useState("Facundo del Valle");
+    const [nombreTemporal, setNombreTemporal] = useState(nombre);
     const [visible, setVisible] = useState<boolean>(false);
+    
+    const cambiarNombre = () => {
+        setNombre(nombreTemporal)
+        setVisible(false)
+    }
 
-    return (
+    return (<>
+        <Modal 
+            animationType="slide"
+            visible={visible}
+            transparent={true}
+            onRequestClose={() => {setVisible(false)}}>
+            <View style = {styles.modalOverlay}>
+                <View style = {styles.modalContainer}>  
+                    <TextInput 
+                        style = {styles.input}
+                        onChangeText={setNombreTemporal} 
+                        value={nombreTemporal}                     
+                    />
+                    <Pressable style = {styles.button} onPress={cambiarNombre}>
+                        <Text>
+                            Aceptar
+                        </Text>
+                    </Pressable>
+                </View>
+            </View>
+        </Modal>
+
         <View style={styles.screenFlex}>
-            <Text style={[{fontSize: 22}]}>{nombre.nombre}</Text>
+            <Text style={[{fontSize: 22}]}>{nombre}</Text>
             <View style={styles.buttonFlex}>
                 <Pressable onPress={(() => setVisible(true))}>
                     <View><Text style={styles.button}>Cambiar nombre</Text> </View>
                 </Pressable>
-                <DialogInput 
-                    isDialogVisible={visible}
-                    title={"Ingrese su nombre"}
-                    message={"Por favor ingrese su nombre"}
-                    hintInput ={"Escriba aqui..."}
-                    submitInput={ (inputText) => {
-                        setNombre({nombre: inputText});
-                        setVisible(false);
-                    }}
-                    closeDialog={ () => {setVisible(false)}}
-                    submitText={"Aceptar"}
-                    cancelText={"Cancelar"}
-                />
             </View>
         </View>
+    </>
     );
 }
 
@@ -53,5 +67,28 @@ const styles = StyleSheet.create({
         padding: 10,
         marginTop: 20,
         borderRadius: 26
+    },
+
+    modalOverlay: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        flex: 1,
+        backgroundColor: "rgba(0, 0, 0, 0.20)",
+    },
+
+    modalContainer: {
+        width: "80%",
+        padding: 20,
+        backgroundColor: "white",
+        borderRadius: 16,
+        alignItems: "center",
+    },
+
+    input: {
+        borderWidth: 1,
+        borderColor: "#ccc",
+        borderRadius: 8,
+        width: "100%",
+        padding: 10,
     },
 });
