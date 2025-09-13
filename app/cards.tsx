@@ -1,5 +1,4 @@
 import {StyleSheet, FlatList, View } from "react-native";
-import React from "react";
 import Tarjeta from "@/components/Tarjeta";
 
 // Conjunto de tarjetas a representar
