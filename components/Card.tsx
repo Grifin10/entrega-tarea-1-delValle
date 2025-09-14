@@ -1,5 +1,5 @@
 import { Text, StyleSheet, Pressable } from "react-native";
-import React, {useState} from "react";
+import { useState } from "react";
 
 type CardProps = {
     id: string,

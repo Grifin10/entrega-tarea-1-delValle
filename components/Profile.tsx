@@ -2,12 +2,12 @@ import { Text, View, Pressable, StyleSheet, Modal, TextInput } from "react-nativ
 import { useState } from "react";
 
 export default function Index() {
-    const [nombre, setNombre] = useState("Facundo del Valle");
-    const [nombreTemporal, setNombreTemporal] = useState(nombre);
+    const [name, setName] = useState<string>("Facundo del Valle");
+    const [tempName, setTempName] = useState<string>(name);
     const [visible, setVisible] = useState<boolean>(false);
     
-    const cambiarNombre = () => {
-        setNombre(nombreTemporal)
+    const changeName = () => {
+        setName(tempName)
         setVisible(false)
     }
 
@@ -21,12 +21,12 @@ export default function Index() {
                 <View style = {styles.modalContainer}>  
                     <TextInput 
                         style = {styles.input}
-                        onChangeText={setNombreTemporal} 
-                        value={nombreTemporal}                     
+                        onChangeText={setTempName} 
+                        value={tempName}                     
                     />
-                    <Pressable style = {styles.button} onPress={cambiarNombre}>
+                    <Pressable style = {styles.button} onPress={changeName}>
                         <Text>
-                            Aceptar
+                            Accept
                         </Text>
                     </Pressable>
                 </View>
@@ -34,10 +34,10 @@ export default function Index() {
         </Modal>
 
         <View style={styles.screenFlex}>
-            <Text style={[{fontSize: 22}]}>{nombre}</Text>
+            <Text style={[{fontSize: 22}]}>{name}</Text>
             <View style={styles.buttonFlex}>
                 <Pressable onPress={(() => setVisible(true))}>
-                    <View><Text style={styles.button}>Cambiar nombre</Text> </View>
+                    <View><Text style={styles.button}>Change name</Text> </View>
                 </Pressable>
             </View>
         </View>

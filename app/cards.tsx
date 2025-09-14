@@ -1,7 +1,6 @@
 import {StyleSheet, FlatList, View } from "react-native";
-import Tarjeta from "@/components/Tarjeta";
+import Card from "@/components/Card";
 
-// Conjunto de tarjetas a representar
 const cards = [
   {id: "1", title: "FORZA"},
   {id: "2", title: "FERRARI"},
@@ -10,12 +9,11 @@ const cards = [
 ];
 
 export default function Index(){
-  // Se retorna una FlatList que para cada tarjeta en cards llama a renderItem y ahi se crea un Item con los parametros correspondientes
   return (
       <View style = {styles.container}>
         <FlatList
           data = {cards}
-          renderItem = {({item}) => (<Tarjeta{...item}/>)}
+          renderItem = {({item}) => (<Card{...item}/>)}
           keyExtractor = {item => item.id}
           contentContainerStyle={{
             flexGrow: 1,
@@ -26,7 +24,6 @@ export default function Index(){
   )
 }
 
-// Estilos para los diferentes elementos
 const styles = StyleSheet.create({
   container: {
     flex: 1,
