@@ -12,7 +12,7 @@ export default function RootLayout() {
       }}
     />
     <Tabs.Screen
-      name="profile"
+      name="index"
       options={{
         title: "Profile",
         tabBarIcon: ({ color }) => <FontAwsome name="user" size={25}/>
@@ -26,7 +26,7 @@ export default function RootLayout() {
       }}
     />
       <Tabs.Screen
-      name="gallery"
+      name="galery"
       options={{
         title: "Gallery",
         tabBarIcon: ({ color }) => <FontAwsome name="table" size={25}/>

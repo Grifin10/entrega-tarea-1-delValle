@@ -9,7 +9,7 @@ type CardProps = {
     textColor?: string
 }
 
-export default function Tarjeta(props: CardProps){
+export default function Card(props: CardProps){
     const [cardProps, setCardProps] = useState<CardProps>({
         id: props.id,
         title: props.title,
@@ -25,7 +25,6 @@ export default function Tarjeta(props: CardProps){
         else{
             setCardProps(prev => ({...prev, pressed: true, backgroundColor: '#9b0303ff', textColor: '#ffffffff'}))
         }
-        
     }
 
     return (

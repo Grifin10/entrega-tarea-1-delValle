@@ -16,12 +16,12 @@ return (
     <View style={styles.screenFlex}>
 
         <View style={styles.buttonFlex}>
-            <Pressable onPress={() => decreaseValue(counter)}>
-                <View><Text style={styles.button}>Decrease value</Text></View>
+            <Pressable onPress={() => decreaseValue(counter)} style={styles.button}>
+                <Text style={{fontSize: 18}}>Decrease value</Text>
             </Pressable>
 
-            <Pressable onPress={() => increaseValue(counter)}>
-                <View><Text style={styles.button}>Increase value</Text></View>
+            <Pressable onPress={() => increaseValue(counter)} style={styles.button}>
+                <Text style={{fontSize: 18}}>Increase value</Text>
             </Pressable>
         </View>
 
@@ -48,8 +48,6 @@ const styles = StyleSheet.create({
     button: {
         color: "#000000ff",
         backgroundColor: "#ff0000ff",
-        fontSize: 18,
-        fontFamily: "SF Pro Text",
         padding: 10,
         marginTop: 20,
         marginBottom: 14,
