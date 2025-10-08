@@ -2,11 +2,10 @@ import { Text, StyleSheet, Image, View, Modal, Pressable } from "react-native";
 import React, {useState} from "react";
 
 type CardProps = {
-    id: string,
-    title: string,
+    name: string,
     favourite?: boolean,
     image: any,
-    price: string,
+    price: number,
     description: string,
     borderColor?: string,
     resizeMode?: any
@@ -15,8 +14,7 @@ type CardProps = {
 export default function Product(props: CardProps){
     const [visible, setVisible] = useState<boolean>(false)
     const [cardProps, setCardProps] = useState<CardProps>({
-        id: props.id,
-        title: props.title,
+        name: props.name,
         favourite: false,
         image: props.image,
         price: props.price,
@@ -55,11 +53,11 @@ export default function Product(props: CardProps){
             >
                 <Pressable style = {styles.modalOverlay} onPress={(() => setVisible(false))}>
                     <Pressable style = {[styles.modalContainer, {borderColor: cardProps.borderColor}]} onPress={(e) => e.stopPropagation()}>
-                        <Text style={styles.title}>{cardProps.title}</Text>
+                        <Text style={styles.name}>{cardProps.name}</Text>
                         <Text style={styles.text}>{cardProps.description}</Text>
                         <Text style={styles.text}>Price: {cardProps.price}</Text>
                         <Image 
-                            source={cardProps.image}
+                            source={{uri: cardProps.image}}
                             style={[styles.modalImage, {resizeMode: cardProps.resizeMode}]}
                         />
                         <View style={{flexDirection:"row"}}>
@@ -74,11 +72,11 @@ export default function Product(props: CardProps){
 
             <Pressable onPress={(() => setVisible(true))} onLongPress={markAsFavourite} style={[styles.item, {borderColor: cardProps.borderColor}]}>
                 <View style={[{flexDirection: "column", flex: 1}]}>
-                    <Text style={styles.title}>{cardProps.title}</Text>
+                    <Text style={styles.name}>{cardProps.name}</Text>
                     <Text style={styles.text}>{cardProps.price}</Text>
                 </View>
                 <Image 
-                    source={cardProps.image}
+                    source={{uri: cardProps.image}}
                     style={styles.image}
                 />
             </Pressable>
@@ -97,7 +95,7 @@ const styles = StyleSheet.create({
         borderWidth: 3
     },
 
-    title: {
+    name: {
         fontSize: 28,
         color: '#000000ff',
         fontWeight: "bold"

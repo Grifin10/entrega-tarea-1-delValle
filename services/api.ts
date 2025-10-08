@@ -1,0 +1,26 @@
+import { BASE_URL } from "@/config/ip_config";
+
+export type ProductDTO = {
+    id: number;
+    name: string;
+    image: string;
+    price: number;
+    description: string;
+    favourite: boolean;
+};
+
+export async function getProducts(): Promise<ProductDTO[]> {
+    const r = await fetch(`${BASE_URL}/products`);
+    if(!r.ok) throw new Error(`GET /products ${r.status}`);
+    return r.json();
+}
+
+export async function createProduct(body: Omit<ProductDTO, "id">): Promise<ProductDTO> {
+    const r = await fetch(`${BASE_URL}/products`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+    });
+    if (!r.ok) throw new Error(`POST /products ${r.status}`);
+    return r.json();
+}
